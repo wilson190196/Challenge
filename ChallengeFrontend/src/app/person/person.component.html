@@ -1,0 +1,41 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #personIdForm="ngForm">
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" [(ngModel)]="person.id"
+               class="form-control"
+               id="id"
+               name="id"
+               placeholder="Enter the id"
+               required #id="ngModel">
+      </div>
+      <div [hidden]="!id.pristine" class="alert alert-danger">Id is required</div>
+      <button type="submit" [disabled]="!personIdForm.form.valid"
+              class="btn btn-info" ng-model="Submit">Submit
+      </button>
+    </form>
+  </div>
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Address</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Phone number</th>
+      </tr>
+      </thead>
+      <tbody>
+      <td *ngIf="!hide">{{ person.id }}</td>
+      <td>{{ person.firstname }}</td>
+      <td>{{ person.lastname }}</td>
+      <td>{{ person.address }}</td>
+      <td>{{ person.mail }}</td>
+      <td>{{ person.phoneNumber }}</td>
+      </tbody>
+    </table>
+  </div>
+</div>
